@@ -21,7 +21,7 @@ def score_by_map():
 @fellow.app.task(name="sql.score_by_borough")
 @typecheck.returns("5 * (string, number, number, count)")
 def score_by_borough():
-    return([(10451, 9.0723684210500011, 0.534553077195, 157.0),
+    return([(10451, 9.0723684210500011, 0.534553077195, 157.0)])
   #data = pd.read_csv("score_boroughs.csv")
     #return(zip(data['borough'], data['mean'], data['std'], data['size']))
 # return [("MANHATTAN", 10.7269875502402, 0.0798259390597376, 10201)] * 5
