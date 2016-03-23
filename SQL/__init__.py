@@ -7,8 +7,7 @@ import pandas as pd
 @fellow.app.task(name="sql.score_by_zipcode")
 @typecheck.returns("92 * (string, number, number, count)")
 def score_by_zipcode():
-    result = pd.read_csv("score_by_zipcode.csv", dtype={'ZIPCODE': np.str, "n":np.int16})
-    result.ZIPCODE = result.ZIPCODE.astype(str)
+    result = pd.read_csv("score_by_zipcode.csv", dtype={'ZIPCODE': np.str, "n":np.int16})   
     return zip(result)
     #return [("11201", 9.81739130434783, 0.394278849322024, 345)] * 92
 
@@ -21,9 +20,9 @@ def score_by_map():
 @fellow.app.task(name="sql.score_by_borough")
 @typecheck.returns("5 * (string, number, number, count)")
 def score_by_borough():
-    data = pd.read_csv("score_boroughs.csv")
+    data = pd.read_csv("SQL/score_boroughs.csv")
     return(zip(data['borough'], data['mean'], data['std'], data['size']))
-# return [("MANHATTAN", 10.7269875502402, 0.0798259390597376, 10201)] * 5
+    return [("MANHATTAN", 10.7269875502402, 0.0798259390597376, 10201)] * 5
 
 @fellow.app.task(name="sql.score_by_cuisine")
 @typecheck.returns("75 * (string, number, number, count)")
