@@ -34,7 +34,7 @@ def score_by_borough():
 def score_by_cuisine():
     import pandas as pd
     import numpy as np
-    data = pd.read_csv("score_cuisine.csv", dtype = {"N":np.int64})
+    data = pd.read_csv("SQL/score_cuisine.csv", dtype = {"N":np.int64})
     return zip(data["CODEDESC"], data["mean"], data['stderr'], data['N'])
     #return [("French", 20.3550686378036, 0.17682605388627, 7576)] * 75score_by_cuisine():
 
