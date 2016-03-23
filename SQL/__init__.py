@@ -8,6 +8,7 @@ import pandas as pd
 @typecheck.returns("92 * (string, number, number, count)")
 def score_by_zipcode():
     import pandas as pd
+    import numpy as np
     result = pd.read_csv("score_by_zipcode.csv", dtype = {"ZIPCODE":np.str, "n":np.int32})
     return zip(result)
     #return [("11201", 9.81739130434783, 0.394278849322024, 345)] * 92
