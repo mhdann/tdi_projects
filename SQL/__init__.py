@@ -2,7 +2,8 @@
 import fellow
 import typecheck
 import pandas as pd
-
+#Irrelevant comment to get commit out
+ 
 @fellow.app.task(name="sql.score_by_zipcode")
 @typecheck.returns("92 * (string, number, number, count)")
 def score_by_zipcode():
