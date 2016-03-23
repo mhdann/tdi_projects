@@ -9,7 +9,7 @@ import pandas as pd
 def score_by_zipcode():
     import pandas as pd
     import numpy as np
-    result = pd.read_csv("SQL/score_by_zipcode.csv", dtype = {"ZIPCODE":np.str, "n":np.int32})
+    result = pd.read_csv("SQL/score_by_zipcode.csv", dtype = {"ZIPCODE":np.str, "n":np.int64})
     return zip(result.ZIPCODE, result.score_mean, result.score_se, result.n)  
    
     #return [("11201", 9.81739130434783, 0.394278849322024, 345)] * 92
