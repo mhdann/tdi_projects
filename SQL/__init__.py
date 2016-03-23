@@ -7,7 +7,8 @@ import pandas as pd
 @fellow.app.task(name="sql.score_by_zipcode")
 @typecheck.returns("92 * (string, number, number, count)")
 def score_by_zipcode():
-    result = pd.read_csv("score_by_zipcode.csv")
+    result = pd.read_csv("score_by_zipcode.csv", dtype={'ZIPCODE': np.str, "n":np.int16})
+    result.ZIPCODE = result.ZIPCODE.astype(str)
     return zip(result)
     #return [("11201", 9.81739130434783, 0.394278849322024, 345)] * 92
 
