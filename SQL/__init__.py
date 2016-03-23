@@ -23,9 +23,11 @@ def score_by_map():
 @fellow.app.task(name="sql.score_by_borough")
 @typecheck.returns("5 * (string, number, number, count)")
 def score_by_borough():
-  #data = pd.read_csv("score_boroughs.csv")
-    #return(zip(data['borough'], data['mean'], data['std'], data['size']))
-    return [("MANHATTAN", 10.7269875502402, 0.0798259390597376, 10201)] * 5
+    import pandas as pd
+    import numpy as np
+    data = pd.read_csv("SQL/score_boroughs.csv", dtype = {"N":np.int64})
+    return(zip(data['boroname'], data['mean'], data['stderr'], data['N']))
+    #return [("MANHATTAN", 10.7269875502402, 0.0798259390597376, 10201)] * 5
 
 @fellow.app.task(name="sql.score_by_cuisine")
 @typecheck.returns("75 * (string, number, number, count)")
