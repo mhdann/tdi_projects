@@ -32,7 +32,11 @@ def score_by_borough():
 @fellow.app.task(name="sql.score_by_cuisine")
 @typecheck.returns("75 * (string, number, number, count)")
 def score_by_cuisine():
-    return [("French", 20.3550686378036, 0.17682605388627, 7576)] * 75
+    import pandas as pd
+    import numpy as np
+    data = pd.read_csv("score_cuisine.csv", dtype = {"N":np.int64})
+    return zip(data["CODEDESC"], data["mean"], data['stderr'], data['N'])
+    #return [("French", 20.3550686378036, 0.17682605388627, 7576)] * 75score_by_cuisine():
 
 @fellow.app.task(name="sql.violation_by_cuisine")
 @typecheck.returns("20 * ((string, string), number, count)")
