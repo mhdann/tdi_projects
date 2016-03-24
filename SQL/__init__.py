@@ -43,7 +43,7 @@ def score_by_cuisine():
 def violation_by_cuisine():
     import pandas as pd
     import numpy as np
-    data = pd.read_csv("./SQL/violation_by_cuisine.csv", dtype = {"A": np.int64})
+    data = pd.read_csv("./SQL/violation_by_cuisine.csv", dtype = {"A": np.int64})[0:20]
     return zip(zip(data.CODEDESC, data.VIOLATIONDESC), data.ratio, data.A)
 #    return [(("Café/Coffee/Tea",
 #              "Toilet facility not maintained and provided with toilet paper; "
