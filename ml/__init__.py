@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 import toolz
-
+import dill
 import typecheck
 import fellow
 from .data import test_json
@@ -15,11 +15,13 @@ def exclude(blacklist, dicts):
             for d in dicts]
 
 
+citymodel = dill.load(open('./ml/city.p', 'rb'))
+
 @fellow.batch(name="ml.city_model")
 @typecheck.test_cases(record=pick({"city"}, test_json))
 @typecheck.returns("number")
 def city_model(record):
-    return 0
+    return citymodel.predict(record['city'])
 
 
 @fellow.batch(name="ml.lat_long_model")
@@ -48,3 +50,4 @@ def attribute_knn_model(record):
 @typecheck.returns("number")
 def full_model(record):
     return 0
+
